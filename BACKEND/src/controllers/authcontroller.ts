@@ -3,7 +3,7 @@ import { RegisterValidation, loginValidation, passwordValidation } from "../vali
 import { connection } from "../../config/database";
 import { User } from "../entities/user.entity";
 import bcrypt from "bcryptjs"
-import { sign, verify } from "jsonwebtoken";
+import { sign} from "jsonwebtoken";
 
 
 
@@ -91,9 +91,9 @@ export const updateInfo: RequestHandler = async (req: RequestUser, res) => {
         const user = req.userinfo as User;
         const repository = connection.getRepository(User);
         if (!req.body) return res.status(403).json({ message: "no values provided" });
-        const {password:dontUpdate, ...updates} =req.body;
-     dontUpdate && console.log({message:"password was not updated"})
-     
+        const { password: dontUpdate, ...updates } = req.body;
+        dontUpdate && console.log({ message: "password was not updated" })
+
         await repository.update(user.id, updates)
         const { password, ...userData } = await repository.findOneBy({ id: user.id }) as User;
         res.status(200).send(userData);
@@ -109,13 +109,13 @@ export const updatePassword: RequestHandler = async (req: RequestUser, res) => {
     try {
         const { error } = passwordValidation.validate(req.body);
         if (error) return res.status(403).json({ message: error.message });
-        const { oldPassword,newPassword } = req.body
+        const { oldPassword, newPassword } = req.body
         const user = req.userinfo as User;
         const repository = connection.getRepository(User);
         if (!req.body) return res.status(403).json({ message: "no values provided" });
         const { password, ..._userData } = await repository.findOneBy({ id: user.id }) as User;
-        if (await bcrypt.compare(oldPassword,password)) {
-            repository.update(user.id,{password: await bcrypt.hash(newPassword,10)});
+        if (await bcrypt.compare(oldPassword, password)) {
+            repository.update(user.id, { password: await bcrypt.hash(newPassword, 10) });
         } else {
             return res.status(403).json({ message: "old password incorrect" });
 
