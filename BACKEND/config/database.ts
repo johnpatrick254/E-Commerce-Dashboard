@@ -1,5 +1,7 @@
 import { DataSource } from "typeorm";
 import { User } from "../src/entities/user.entity";
+import { Role } from "../src/entities/role.entity";
+import { Permision } from "../src/entities/permision.entity";
 export const connection = new DataSource({
     type: "mysql",
     synchronize:true,
@@ -9,7 +11,9 @@ export const connection = new DataSource({
     password: "1234",
     database: "databaseclass",
     entities: [
-         User
+         User,
+         Role,
+         Permision
     ],
     logging:false
 });
