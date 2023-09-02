@@ -1,6 +1,6 @@
 import { Request, RequestHandler } from "express";
 import { verify } from "jsonwebtoken";
-import { connection } from "../../config/database";
+import { connection } from "../../config/ormconfig";
 import { User } from "../entities/user.entity";
 
 interface RequestUser extends Request {
@@ -11,10 +11,11 @@ export const authMiddlware: RequestHandler = async (req: RequestUser, res, next)
         const { userinfo: jwt } = req.cookies;
         const payload: any = verify(jwt, "secret")
         if (!payload) return res.status(401).send({ message: "unauthentcated user" })
-        const { id, ..._rest } = payload;
+        const { id, ..._ } = payload;
         const repository = connection.getRepository(User);
-        req.userinfo = await repository.findOneBy({
-            id: id
+        req.userinfo = await repository.findOne({
+           where: {id: id},
+            relations:['role','role.permisions']
         }) as User;
         next();
     } catch (error) {
