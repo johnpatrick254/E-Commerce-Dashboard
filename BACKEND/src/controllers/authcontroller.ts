@@ -1,9 +1,10 @@
 import { Request, RequestHandler } from "express";
 import { RegisterValidation, loginValidation, passwordValidation } from "../validators/register.validation";
-import { connection } from "../../config/database";
+import { connection } from "../../config/ormconfig";
 import { User } from "../entities/user.entity";
 import bcrypt from "bcryptjs"
 import { sign} from "jsonwebtoken";
+import { seedPerms } from "../seeders/role.seeder";
 
 
 
@@ -31,6 +32,7 @@ export const register: RequestHandler = async (req, res) => {
 }
 
 export const login: RequestHandler = async (req, res) => {
+    seedPerms()
     const { error } = loginValidation.validate(req.body)
     if (error) return res.json({ message: error.message })
     const { email, password } = req.body;
