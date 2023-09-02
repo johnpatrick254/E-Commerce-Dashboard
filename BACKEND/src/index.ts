@@ -1,7 +1,7 @@
 
 import  express  from "express";
 import cors from "cors"
-import { connection } from "../config/database";
+import { connection } from "../config/ormconfig";
 import { router } from "./routes/routes";
 import cookieParser from "cookie-parser"
 import { exit } from "process";
