@@ -1,0 +1,58 @@
+#nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  grid-area: nav;
+  padding: 0.7em 2em;
+  border-bottom: 1px solid #EEEEEE;
+}
+#nav #logo {
+  height: 2rem;
+  width: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  flex-flow: row nowrap;
+  font-size: 0.6555rem;
+  background-color: #EEEEEE;
+  border-radius: 3px;
+  padding: 0.3em 0;
+  color: #000000;
+}
+#nav #logo:hover {
+  color: #5f5b5b;
+  outline: 1.5px solid #EEEEEE;
+  cursor: pointer;
+}
+#nav #logo img {
+  width: 25%;
+  height: 100%;
+}
+#nav #logo h3 {
+  line-break: anywhere;
+}
+#nav #login {
+  width: 7rem;
+  height: 100%;
+}
+#nav #login button {
+  font-size: 1.1555rem;
+  padding: 0.2em 0;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  background-color: #EEEEEE;
+  color: #000000;
+  font-weight: 500;
+  width: 100%;
+}
+#nav #login button:hover {
+  background-color: #000000;
+  color: #EEEEEE;
+  outline: 1.5px solid #EEEEEE;
+  cursor: pointer;
+}/*# sourceMappingURL=nav.style.css.map */
