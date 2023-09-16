@@ -1,7 +1,7 @@
 import { Router,static as staticRoute } from "express";
-import {login, logoutUser, register, updateInfo, updatePassword } from "../controllers/authcontroller";
+import { authenticatedUser, login, logoutUser, register, updateInfo, updatePassword } from "../controllers/authcontroller";
 import { authMiddlware } from "../middlewares/auth.middleware";
-import { createUsers, deleteUsers, fetchAllUsers, fetchOneUsers, updateUsers } from "../controllers/usercontroller";
+import { createUsers, deleteUsers, fetchAllUsers, fetchOneUsers, totalUsers, updateUsers } from "../controllers/usercontroller";
 import { Permisions } from "../controllers/permisioncontroller";
 import { creatRoles, deleteRoles, getRolesByID, roles, updateRoles } from "../controllers/rolecontroller";
 import { createProduct, deleteProduct, fetchAllProducts, fetchOneProduct, updateProduct } from "../controllers/productcontoller";
@@ -9,7 +9,7 @@ import { seedPerms } from "../seeders/role.seeder";
 import { seedProducts } from "../seeders/product.seeder";
 import { uploadImgae } from "../controllers/imagecontroller";
 import { seedOrders } from "../seeders/order.seeder";
-import { chartData, exportCSV, fetchAllOrders } from "../controllers/ordercontroller";
+import { chartData, exportCSV, fetchAllOrders, fetchProfitData, topProductsData, totalOrders, totalOrdersChart } from "../controllers/ordercontroller";
 import { permisionMiddleware } from "../middlewares/permision.middleware";
 
 
@@ -27,6 +27,7 @@ export const router =async (router:Router)=>{
   
     router.post("/api/register",register)
     router.post("/api/login",login)
+    router.get("/api/user",authMiddlware,authenticatedUser)
     router.post("/api/logout",authMiddlware,logoutUser)
     router.put("/api/user/info",authMiddlware,updateInfo)
     router.patch("/api/user/info",authMiddlware,updatePassword)
@@ -40,6 +41,7 @@ export const router =async (router:Router)=>{
     router.get("/api/users/:id",authMiddlware,await permisionMiddleware('users'),fetchOneUsers)
     router.put("/api/users/:id",authMiddlware,await permisionMiddleware('users'),updateUsers)
     router.delete("/api/users/:id",authMiddlware,await permisionMiddleware('users'),deleteUsers)
+    router.get("/api/total-users",authMiddlware,await permisionMiddleware('users'),totalUsers)
 
      //////////////////
     //ROLES ROUTES////
@@ -61,11 +63,15 @@ export const router =async (router:Router)=>{
     router.delete("/api/products/:id",authMiddlware,await permisionMiddleware('products'),deleteProduct)
     router.use('/api/upload',authMiddlware,staticRoute('./uploads'))
 
-    //////////////////await permisionMiddleware('products'),
-    //ORDERS ROUTES//
     //////////////////
+    //ORDERS ROUTES//
+    /////////////////
     router.get("/api/orders",authMiddlware,await permisionMiddleware('products'),fetchAllOrders)
     router.post("/api/export",authMiddlware,await permisionMiddleware('products'),exportCSV)
     router.get("/api/chart",authMiddlware,await permisionMiddleware('products'),chartData)
+    router.get("/api/top-products",authMiddlware,await permisionMiddleware('products'),topProductsData)
+    router.get("/api/total-orders",authMiddlware,await permisionMiddleware('products'),totalOrders)
+    router.get("/api/total-profits",authMiddlware,await permisionMiddleware('products'),fetchProfitData)
+    router.get("/api/total-orders-chart",authMiddlware,await permisionMiddleware('products'),totalOrdersChart)
     
 } ;
