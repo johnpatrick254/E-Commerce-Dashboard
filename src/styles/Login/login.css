@@ -1,0 +1,198 @@
+input {
+  outline: none;
+  height: 2rem;
+  padding: 0.2em 0.4em;
+  background-color: white;
+  color: #000000;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background-color: #dddbdb;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+}
+.container .login {
+  background-color: #ffffff;
+  width: 72%;
+  min-height: -moz-max-content;
+  min-height: max-content;
+  padding: 4% 2%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  border-radius: 0.7rem;
+  box-shadow: 1px -1px 9px 2px rgba(25, 26, 25, 0.75);
+  -webkit-box-shadow: 1px -1px 9px 2px rgba(49, 49, 50, 0.75);
+  -moz-box-shadow: 1px -1px 9px 2px rgba(43, 44, 44, 0.75);
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  /* Medium devices (landscape tablets, 768px and up) */
+  /* Large devices (laptops/desktops, 992px and up) */
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+}
+@media only screen and (max-width: 600px) and (min-width: 400px) {
+  .container .login {
+    width: 62%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .container .login {
+    width: 55%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .container .login {
+    width: 48%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .container .login {
+    width: 38%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container .login {
+    width: 28%;
+  }
+}
+.container .login .login-logo {
+  height: 4rem;
+  width: 100%;
+  border-radius: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.8855rem;
+}
+.container .login .login-logo p {
+  color: #000000;
+  font-weight: 700;
+}
+.container .login .login-logo img {
+  outline: 2px solid #888888;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.container .login .login-actions {
+  width: 100%;
+  display: flex;
+  gap: 1.5rem;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.container .login .login-actions_welcome {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5em;
+  color: #000000;
+}
+.container .login .login-actions_welcome .err-txt {
+  color: red;
+}
+.container .login .login-actions_options {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #000000;
+  padding: 2%;
+  color: #f6f6f6;
+  border-radius: 4px;
+  gap: 1rem;
+}
+.container .login .login-actions_options .login-actions_options-select:hover {
+  cursor: pointer;
+}
+.container .login .login-actions_options .selected {
+  transition: background-color 200ms linear;
+  background-color: #f6f6f6;
+  padding: 0.2em 0.4em;
+  border-radius: 2px;
+  font-weight: 600;
+  color: #000000;
+}
+.container .login .login-actions_input {
+  width: 100%;
+  min-height: -moz-max-content;
+  min-height: max-content;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1rem;
+}
+.container .login .login-actions_input p {
+  font-weight: 600;
+  color: #000000;
+}
+.container .login .login-actions_input .email {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.container .login .login-actions_input .email input {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid rgb(118, 118, 118);
+}
+.container .login .login-actions_input .password {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.container .login .login-actions_input .password .pass-input {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius: 4px;
+}
+.container .login .login-actions_input .password .pass-input input {
+  width: 85%;
+  border: none;
+}
+.container .login .login-actions_input .password .pass-input img {
+  width: 15%;
+  height: 1.3rem;
+}
+.container .login .login-actions_input .password .pass-input img:hover {
+  cursor: pointer;
+}
+.container .login .login-submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 34px;
+}
+.container .login .login-submit button {
+  width: 100%;
+  padding: 0.5em 0;
+  background-color: #000000;
+  border: none;
+  color: #f6f6f6;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.container .login .login-submit button:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=login.css.map */
