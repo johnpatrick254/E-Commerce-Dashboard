@@ -1,0 +1,49 @@
+#sidebar{
+    width: 100%;
+    grid-area: sidebar;
+    padding: 1.8em;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+    background-color: #fffdfd;
+    border-radius: 0 0 0 8px;
+
+    .sidebar_component{
+        padding: 0.4em 0.7em;
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content:space-between;
+        align-items: center;
+        border-radius: 5px;
+        font-size: 0.7555rem;
+        color: #000000;
+
+        &:hover{
+            cursor: pointer;
+        }
+        &::selection{
+            background-color: #EEEEEE;
+        }
+        .next{
+            
+            img{
+                width: 1.5rem;
+                height: 1.5rem;
+               
+            }
+        }
+    }
+    .active{
+        background-color: #74d6ef;
+        img{
+            background-color: rgba(22, 22, 22, 0);
+        }
+    }
+    img{
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: #EEEEEE;
+    }
+}
