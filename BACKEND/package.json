@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon api/index.ts",
+    "start": "nodemon dist/src/index.js",
     "tsc": "tsc",
     "roles:seed": "ts-node src/seeders/role.seeder.ts"
   },
@@ -31,6 +31,7 @@
     "@types/jsonwebtoken": "^9.0.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
+    "express-validation": "^4.1.0",
     "faker": "^6.6.6",
     "fs-extra": "^11.1.1",
     "json2csv": "^6.0.0-alpha.2",

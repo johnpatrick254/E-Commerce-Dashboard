@@ -5,7 +5,7 @@ import { OrderItem } from "./orderitem.entity";
 export class Orders{
     @PrimaryGeneratedColumn()
     id:number;
-    
+     
     @Column()
     first_name:string;
 
@@ -28,5 +28,11 @@ export class Orders{
 
     get totals():number{
         return this.order_items.reduce((a,b)=>a + (b.price * b.quantity),0)
+    }
+    get profits():number{
+        const salesPrice= this.order_items.reduce((a,b)=>a + (b.price * b.quantity),0)
+        const OgPrice = this.order_items.reduce((a,b)=>a + (b.original_price * b.quantity),0)
+        const profit = salesPrice -OgPrice
+        return profit
     }
 }

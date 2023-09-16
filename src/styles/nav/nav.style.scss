@@ -1,0 +1,105 @@
+#nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: #000000;
+    border-radius: 8px 8px 0 0;
+    grid-area: nav;
+    padding: 1.15em 2em;
+    background-color: #ffffff;
+    border-bottom: 1px solid #EEEEEE;
+
+    #logo {
+        height: 2rem;
+        width: 12rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 0.5em;
+        flex-flow: row nowrap;
+        font-size: 0.6555rem;
+        border-radius: 3px;
+        padding: 0.3em 0;
+
+        &:hover {
+            color: #5f5b5b;
+            outline: 1.5px solid #EEEEEE;
+            cursor: pointer;
+        }
+
+        img {
+            width: 25%;
+            height: 100%;
+        }
+
+        h3 {
+            line-break: anywhere;
+        }
+    }
+
+    #login {
+        min-width: max-content;
+        height: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 1.5rem;
+
+        .username {
+            min-width: max-content;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 700
+        }
+        
+    }
+    
+    .logout{
+        position: relative;
+         min-width: max-content;
+         height: 100%;
+         gap:0.5em;
+         display:flex;
+         flex-flow: row nowrap;
+        &:hover{
+            cursor: pointer;
+        }
+        img{
+            width: 2rem; 
+            height: 90%;
+        }
+        button {
+            font-size: 0.87rem;
+            visibility: visible;
+            min-width: max-content;
+            position: relative;
+            visibility: hidden;
+            font-weight: 700;
+            padding: 0.2em 0;
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            background-color: #EEEEEE;
+            color: #000000;
+            width: 100%;
+            padding: 0.3em ;
+            &:hover{
+                cursor: pointer;
+            }
+            
+        }
+        .show-logout{
+            position: relative;
+            right: 0 ;
+            visibility: visible ;
+            transition: visibilty 1.5s ease-in-out ;
+        }
+    }
+    
+    
+}

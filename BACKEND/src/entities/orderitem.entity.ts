@@ -1,23 +1,44 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Repository } from "typeorm";
 import { Orders } from "./orders.entity";
+import { Product } from "./product.entity";
+import { randomInt } from "crypto";
 
 @Entity()
-export class OrderItem{
+export class OrderItem {
     @PrimaryGeneratedColumn()
-    id:number;
+    id: number;
 
     @Column()
-    productTitle:string
+    product_id: Number
 
     @Column()
-    price:number
+    productTitle: string
 
     @Column()
-    quantity:number
-    @ManyToOne(()=>Orders)
+    price: number
+    @Column()
+    original_price: number
+   
+    @Column()
+    quantity: number
+    @ManyToOne(() => Orders)
     @JoinColumn({
-        name:'order_id'
+        name: 'order_id'
     })
-    order:Orders
+    order: Orders;
 
-}
+    public async setPrice(repo: Repository<Product>) {
+        const price = await repo.findOne({ where: { id: +this.product_id } })
+        if (price) {
+            this.price = price.price
+            this.original_price =price.original_price
+        }else{
+            this.price = randomInt(100,250);
+            this.original_price = randomInt(100,250);
+        }
+
+    }
+
+
+} 
+
