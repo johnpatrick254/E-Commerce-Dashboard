@@ -1,33 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { AuthenicatedUser } from "./Utils/util";
+import Login from "./components/Login/Login";
+import { UserProvider } from "./contexts/useContexts";
+import { Home } from "./pages/Home"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+
+const fetchAuthenticatedUser = async (setUser: Function) => {
+  const user = await axios.get("http://localhost:3000/api/user", {
+    withCredentials: true
+  }).then(res => {
+    if (res.status == 200) {
+      return res.data as AuthenicatedUser
+    } else {
+      console.log(res.data);
+      return null
+    }
+  }).catch(e => {
+    console.log(e.response.data);
+    return null
+
+  })
+  if (user !== null) {
+    setUser(user)
+  } else {
+  }
+
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [authUser, setAuthUser] = useState<AuthenicatedUser | null>(null)
+  useEffect(() => {
+    const setUser = async () => {
+      fetchAuthenticatedUser(setAuthUser);
+    }
+    setUser()
+  }, [])
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <UserProvider.Provider value={authUser}>
+        <Router>
+          <Routes>
+            <Route path="/" Component={Home} />
+            <Route path="/login" Component={Login} />
+          </Routes>
+        </Router>
+      </UserProvider.Provider>
+
     </>
   )
 }
