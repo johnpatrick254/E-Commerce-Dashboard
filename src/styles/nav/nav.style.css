@@ -4,8 +4,12 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  width: 100%;
+  color: #000000;
+  border-radius: 8px 8px 0 0;
   grid-area: nav;
-  padding: 0.7em 2em;
+  padding: 1.15em 2em;
+  background-color: #ffffff;
   border-bottom: 1px solid #EEEEEE;
 }
 #nav #logo {
@@ -18,10 +22,8 @@
        column-gap: 0.5em;
   flex-flow: row nowrap;
   font-size: 0.6555rem;
-  background-color: #EEEEEE;
   border-radius: 3px;
   padding: 0.3em 0;
-  color: #000000;
 }
 #nav #logo:hover {
   color: #5f5b5b;
@@ -36,23 +38,61 @@
   line-break: anywhere;
 }
 #nav #login {
-  width: 7rem;
+  min-width: -moz-max-content;
+  min-width: max-content;
   height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 1.5rem;
 }
-#nav #login button {
-  font-size: 1.1555rem;
+#nav #login .username {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+#nav #login p {
+  font-size: 1rem;
+  font-weight: 700;
+}
+#nav .logout {
+  position: relative;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  height: 100%;
+  gap: 0.5em;
+  display: flex;
+  flex-flow: row nowrap;
+}
+#nav .logout:hover {
+  cursor: pointer;
+}
+#nav .logout img {
+  width: 2rem;
+  height: 90%;
+}
+#nav .logout button {
+  font-size: 0.87rem;
+  visibility: visible;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  position: relative;
+  visibility: hidden;
+  font-weight: 700;
   padding: 0.2em 0;
   outline: none;
   border: none;
   border-radius: 3px;
   background-color: #EEEEEE;
   color: #000000;
-  font-weight: 500;
   width: 100%;
+  padding: 0.3em;
 }
-#nav #login button:hover {
-  background-color: #000000;
-  color: #EEEEEE;
-  outline: 1.5px solid #EEEEEE;
+#nav .logout button:hover {
   cursor: pointer;
+}
+#nav .logout .show-logout {
+  position: relative;
+  right: 0;
+  visibility: visible;
+  transition: visibilty 1.5s ease-in-out;
 }/*# sourceMappingURL=nav.style.css.map */
