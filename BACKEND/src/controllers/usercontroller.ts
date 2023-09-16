@@ -105,3 +105,8 @@ export const deleteUsers = async (req: Request, res: Response) => {
         return res.status(502).json({ message: err });
     }
 }
+
+export const totalUsers = async(_req:Request,res:Response)=>{
+    const results = await connection.query("SELECT COUNT(*) as data FROM user;")
+    res.status(200).send(results); 
+}
