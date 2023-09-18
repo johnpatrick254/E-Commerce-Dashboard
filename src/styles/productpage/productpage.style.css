@@ -6,7 +6,7 @@
   background-color: #f4f1f1;
   border-radius: 0 0 8px 8px;
   color: #000000;
-  grid-template-areas: "product-details_image  product-details_main" "product-details_image  product-details_secondary" "product-details_image  product-details_secondary";
+  grid-template-areas: "product-details_image product-details_image  product-details_main" "product-details_image product-details_image  product-details_secondary" "product-details_image product-details_image  product-details_secondary";
   grid-template-rows: 0.4fr 1fr;
   width: 100%;
   height: 100%;
@@ -19,7 +19,7 @@
   width: 100%;
   flex-flow: column nowrap;
   justify-items: baseline;
-  padding: 0.2rem 0.4rem;
+  padding: 0.4rem;
 }
 .product-container .product-details_main .title {
   display: flex;
@@ -29,13 +29,14 @@
 .product-container .product-details_main .title button {
   min-width: -moz-max-content;
   min-width: max-content;
-  font-size: 1rem;
+  font-size: 1.245rem;
   font-family: inherit;
   padding: 0.2em 0.4em;
   border-radius: 3px;
   border: none;
   color: #f4f1f1;
   background-color: #000000;
+  place-self: start;
 }
 .product-container .product-details_main .title button:hover {
   background-color: #ffffff;
@@ -47,7 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 45%;
+  width: 55%;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -80,9 +81,98 @@
 }
 .product-container .product-details_secondary {
   display: grid;
-  padding: 0.2rem 0.4rem;
+  padding: 0.4rem;
   place-content: start;
   row-gap: 1rem;
   grid-area: product-details_secondary;
   background-color: #ffffff;
+}
+
+.product-form {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.product-form form {
+  width: 60%;
+  min-height: 88%;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #f4f1f1;
+  color: #000000;
+  position: relative;
+  border-radius: 6px;
+  padding: 0.3em 0.6em;
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 3rem;
+  justify-content: center;
+}
+.product-form form button.cancel {
+  position: absolute;
+  top: 2%;
+  right: 3%;
+}
+.product-form form button {
+  min-width: -moz-max-content;
+  min-width: max-content;
+  font-size: 1.2rem;
+  font-family: inherit;
+  padding: 0.4em;
+  border-radius: 3px;
+  border: none;
+  color: #f4f1f1;
+  background-color: #000000;
+}
+.product-form form button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  outline: 1px solid #000000;
+}
+.product-form form label {
+  font-weight: 700;
+}
+.product-form form .header, .product-form form .footer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5rem;
+}
+.product-form form .header div, .product-form form .footer div {
+  display: inherit;
+  gap: 0.5rem;
+}
+.product-form form .header div:has(input.product-name), .product-form form .footer div:has(input.product-name) {
+  width: 40%;
+}
+.product-form form .header div:has(input.product-name) input, .product-form form .footer div:has(input.product-name) input {
+  width: 50%;
+}
+.product-form form .header div input, .product-form form .footer div input {
+  color: #000000;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: inherit;
+}
+.product-form form .textarea {
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 1rem;
+}
+.product-form form .textarea textarea {
+  background-color: inherit;
+  padding: 0.4em;
+  color: #000000;
 }/*# sourceMappingURL=productpage.style.css.map */
