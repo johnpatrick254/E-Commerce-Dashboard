@@ -1,12 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query'
-import { productApi } from '../api/Products.slice'
+// store.js
+
+import { configureStore} from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { apiGateWay } from '../api/ApiSlice.slice';
+
 
 export const store = configureStore({
   reducer: {
-    [productApi.reducerPath]: productApi.reducer,
+    [apiGateWay.reducerPath]:apiGateWay.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(productApi.middleware),
-})
-setupListeners(store.dispatch)
+    getDefaultMiddleware().concat(apiGateWay.middleware),
+});
+setupListeners(store.dispatch);
