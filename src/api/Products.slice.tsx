@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ProductData } from '../Utils/ProductPage/ProductData';
+import { apiGateWay } from './ApiSlice.slice';
 
 // Define your API slice
 type getAllProductsResponse = {
@@ -20,41 +21,37 @@ type productPostData = {
     category?:string
   }
 }
-export const productApi = createApi({
-  reducerPath: 'api',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3000/api/products',
-    credentials: 'include',
-  }),
-  tagTypes: ["products","product"],
-  endpoints: (builder) => ({
-    getAllProducts: builder.query<getAllProductsResponse, string>({
-      query: (number) => `?pages=${number}`,
+
+const productApi =apiGateWay.enhanceEndpoints({addTagTypes:['products','product']}).injectEndpoints({
+  endpoints:(builder) => ({
+    getAllProducts: builder.query<getAllProductsResponse, {page:string,category?:string}>({
+      query: ({page,category}) => `/api/products?pages=${page}${category ? '&category='+category:""}`,
       providesTags: ["products"]
     }),
     getProductByID: builder.query<ProductData, string>({
-      query: (number) => `/${number}`,
+      query: (number) => `/api/products/${number}`,
       providesTags: ["product"]
     }),
     createProduct: builder.mutation<ProductData, productPostData>({
       query: ({ body }) => ({
-        url: `/`, method: "post", body: body
+        url: `/api/products`, method: "post", body: body
       }),
       invalidatesTags: ["products","product"]
     }),
     updateProduct: builder.mutation<ProductData, productPostData>({
       query: ({ id, body }) => ({
-        url: `/${id}`, method: "put", body: body
+        url: `/api/products/${id}`, method: "put", body: body
       }),
       invalidatesTags: ["products","product"]
     }),
     deleteProduct: builder.mutation<ProductData, string>({
       query: (id) => ({
-        url: `/${id}`, method: "delete"
+        url: `/api/products/${id}`, method: "delete"
       }),
       invalidatesTags: ["products","product"]
     }),
-  }),
-});
+  })
+})
+
 
 export const { useGetAllProductsQuery, useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation,useGetProductByIDQuery } = productApi;
