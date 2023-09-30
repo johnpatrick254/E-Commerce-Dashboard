@@ -5,7 +5,7 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
-import { OrdersData } from "../../Utils/util";
+import { OrdersData } from "../../Utils/Dashboard/OrdersData";
 
 
 
