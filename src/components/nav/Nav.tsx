@@ -11,7 +11,7 @@ export const Nav = () => {
   const navigate = useNavigate()
   const authUser = useUserContext();
   const [redirect, setRedirect] = useState<boolean>(false);
-  const [showLogoout, setShowLogout]=useState<boolean>(false)
+  const [showLogoout, setShowLogout]=useState<boolean>(true)
   useEffect(()=>{
     const checkLogin = async () => {
       await axios.get("http://localhost:3000/api/user", {
@@ -54,7 +54,7 @@ export const Nav = () => {
   }
 
   const handleMouseOver =()=>{
-      setShowLogout(!showLogoout)
+      setShowLogout(true)
   }
   return <>
     <nav aria-label="navbar" id="nav">
