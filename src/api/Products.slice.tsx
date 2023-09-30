@@ -1,4 +1,3 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ProductData } from '../Utils/ProductPage/ProductData';
 import { apiGateWay } from './ApiSlice.slice';
 
