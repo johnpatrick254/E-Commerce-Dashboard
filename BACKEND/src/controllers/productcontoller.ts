@@ -5,12 +5,14 @@ import { Product } from "../entities/product.entity";
 export const fetchAllProducts = async (req: Request, res: Response) => {
     try {
         let pageNumber: number = parseInt(req.query.page as string || "1")
-        const take = 15;
+        let category:string | undefined = req.query.category as string | undefined
+        const take = 20;
 
         const repository = connection.getRepository(Product);
         const { "0": products, "1": totals } = await repository.findAndCount({
             take: take,
-            skip: ((pageNumber - 1) * take)
+            skip: ((pageNumber - 1) * take),
+            where:{category:category}
         })
 
         res.status(200).send(
@@ -32,14 +34,16 @@ export const fetchAllProducts = async (req: Request, res: Response) => {
 
 }
 export const createProduct = async (req: Request, res: Response) => {
-    const { name, description, image, price } = req.body
+    const { name, description, image, price, category, original_price } = req.body
     try {
         const repository = connection.getRepository(Product);
         const product = await repository.save({
             name: name,
             description: description,
             image: image,
-            price: price
+            price: price,
+            category: category,
+            original_price: original_price
         })
         res.status(200).send(product);
     } catch (err) {
@@ -69,6 +73,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
         const repository = connection.getRepository(Product);
+
         const product = await repository.save({
             id: +id,
             ...req.body,
