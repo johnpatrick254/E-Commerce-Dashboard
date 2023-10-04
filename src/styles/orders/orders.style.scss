@@ -1,0 +1,135 @@
+.orders-page-container {
+    display: grid;
+    grid-area: main;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    grid-template-areas:
+        "sidebar main-content main-content main-content"
+        "sidebar main-content main-content main-content"
+        "sidebar main-content main-content main-content"
+        "sidebar main-content main-content main-content"
+    ;
+    grid-template-columns: 0.7fr 1fr 1fr 1fr;
+    column-gap: 0.5rem;
+    background-color: #f4f1f1;
+    border-radius: 0 0 8px 8px;
+    overflow-y: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    place-items: start;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .orders {
+        grid-area: main-content;
+        background-color: #fff;
+        width: 100%;
+        padding: 1rem;
+        color: #000000;
+        display: flex;
+        flex-flow: column nowrap;
+        row-gap: 1rem;
+          .order-card-title{
+            p{
+                font-weight: 700;
+            }
+          }
+        .order-card {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 100%;
+            height: 1.8rem;
+            row-gap: 0.5rem;
+            overflow: hidden;
+            transition:all 500ms linear;
+            &:nth-child(odd){
+                background-color: #f4f1f1;
+            }
+            &:hover{
+                cursor: pointer;
+            }
+            padding: 0 0.5em; 
+            border-radius: 4px;
+            
+            .order {
+                display: flex;
+                flex-flow: row nowrap;
+                width: 100%;
+               
+                .order-number{
+                    margin-right: 0.5em;
+                    width: 1.5rem;
+                }
+                .customer-name{
+                    margin-right: 0.5em;
+                    width: 28%;
+                }
+                .customer-mail{
+                    margin-right: 0.5em;
+                    width: 28%;
+                }
+                .purchase-date{
+                    width: 15%;
+                    margin-right: 0.5em;
+                }
+                .amount{
+                    margin-right: 0.5em;
+                    width: 3rem;
+
+                }
+                .dropdown{
+                    margin-right: 0.5em;
+                    width: 1.5rem;
+
+                }
+            }
+
+            .order-item {
+                margin-left: 2em;
+                display: flex;
+                flex-flow: column nowrap;
+                row-gap: 0.2em;
+                width: 100%;
+
+                .order-item-card {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    width: 100%;
+
+                    .product-number {
+                        margin-right: 0.5em;
+                        width: 1rem;
+                    }
+
+                    .product-name {
+                        margin-right: 0.5em;
+                        width: 30%;
+                    }
+
+                    .product-quantity {
+                        margin-right: 0.5em;
+                        width: 2.5rem;
+                    }
+
+                    .product-price {
+                        margin-right: 0.5em;
+                    }
+
+                    .product-amount {
+                        margin-right: 0.5em;
+                    }
+
+                }
+            }
+        }
+
+
+
+    }
+}
