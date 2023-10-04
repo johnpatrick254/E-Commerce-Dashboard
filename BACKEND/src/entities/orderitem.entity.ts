@@ -6,7 +6,7 @@ import { randomInt } from "crypto";
 @Entity()
 export class OrderItem {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: number; 
 
     @Column()
     product_id: Number

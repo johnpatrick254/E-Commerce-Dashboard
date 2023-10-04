@@ -10,25 +10,24 @@ export const seedOrders = async () => {
   const orderItemRepo = connection.getRepository(OrderItem);
   const productItemRepo = connection.getRepository(Product);
 
-  for (let index = 0; index < 70; index++) {
+  for (let index = 0; index < 200; index++) {
     const order = await orderRepo.save({
-      first_name: fakerEN.person.firstName(),
+      first_name: fakerEN.person.lastName(),
       last_name: fakerEN.person.lastName(),
       email: fakerEN.internet.email(),
       created_at: fakerEN.date.past({ years: 2 }).toISOString(),
     });
-
+    
     for (let i = 0; i < randomInt(1, 6); i++) {
       const io = new OrderItem()
-      io.productTitle= fakerEN.commerce.productName();
-      io.quantity=randomInt(5, 9);
-      io.order= order;
-      io.product_id= randomInt(1, 50);
+      io.productTitle = fakerEN.commerce.productName();
+      io.quantity = randomInt(5, 9);
+      io.order = order;
+      io.product_id = randomInt(1, 50);
       await io.setPrice(productItemRepo);
       await orderItemRepo.save(io);
       console.log(io);
     }
   }
-
   process.exit(0);
 };

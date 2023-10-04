@@ -23,7 +23,7 @@ export const uploadImgae = (req:Request,res:Response) =>{
         if(err){
             return res.status(400).send({message:err})
         }
-        res.send({
+        res.status(200).send({
             url:"http://localhost:3000/api/upload/" + `${req.file?.filename}`
         })
     })

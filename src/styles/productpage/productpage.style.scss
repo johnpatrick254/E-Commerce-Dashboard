@@ -12,8 +12,10 @@
         "product-details_image product-details_image  product-details_secondary"
     ;
     grid-template-rows: 0.4fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr 1fr;
+    place-self: start;
+    height: clamp(150px,100%,527px);
     width: 100%;
-    height: 100%;
 
 
     .product-details_main {
@@ -82,8 +84,9 @@
     .product-details_image {
         grid-area: product-details_image;
         height: 100%;
-        width: 100%;
-
+        width: clamp(150px,100%,1280px);
+        overflow: hidden;
+        
         img {
             border-radius: 4px;
             width: 100%;
@@ -133,6 +136,9 @@
         row-gap: 3rem;
         justify-content: center;
         
+        .spinner{
+            align-self: center;
+        }
         button.cancel{
             position: absolute;
             top:2%;

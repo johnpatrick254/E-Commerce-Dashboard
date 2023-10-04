@@ -60,11 +60,14 @@
   min-width: max-content;
   height: 100%;
   gap: 0.5em;
+  padding: 3px;
+  border-radius: 4px;
   display: flex;
   flex-flow: row nowrap;
 }
 #nav .logout:hover {
   cursor: pointer;
+  outline: 2px solid #000000;
 }
 #nav .logout img {
   width: 2rem;

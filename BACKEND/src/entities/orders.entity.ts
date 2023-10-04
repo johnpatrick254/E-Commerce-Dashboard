@@ -23,7 +23,7 @@ export class Orders{
 
 
     get name ():string{
-        return this.email + " " + this.last_name
+        return this.first_name + " " + this.last_name
     }
 
     get totals():number{

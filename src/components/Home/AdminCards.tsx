@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { CardChart } from "../Charts/CardChart";
-import { OrdersData, fetchProfitData, fetchTotalOrders, fetchTotalOrdersChartData, fetchTotalUsers, profitData } from "../../Utils/util";
+import { fetchTotalOrders } from "../../Utils/Dashboard/fetchTotalOrders";
+import { fetchTotalUsers } from "../../Utils/Dashboard/fetchTotalUsers";
+import { OrdersData } from "../../Utils/Dashboard/OrdersData";
+import { fetchTotalOrdersChartData } from "../../Utils/Dashboard/fetchTotalOrdersChartData.1";
+import { profitData } from "../../Utils/Dashboard/profitData";
+import { fetchProfitData } from "../../Utils/Dashboard/fetchProfitData";
 
 type AdminCardProp = {
     name: string;

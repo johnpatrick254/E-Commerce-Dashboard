@@ -36,10 +36,10 @@ export const fetchAllUsers = async (req: Request, res: Response) => {
 }
 export const createUsers = async (req: Request, res: Response) => {
     try {
-        const { role_id, ...body } = req.body;
-        const password = await hash("1234", 10);
+        const { role_id,password_confirm:setPassword, ...body } = req.body;
+        const password = await hash(setPassword, 10);
         const repository = connection.getRepository(User);
-        const { password: hashedPass, ...user } = await repository.save({
+        const { password: hashedPass,password_confirm, ...user } = await repository.save({
             ...body,
             password: password,
             role:{
