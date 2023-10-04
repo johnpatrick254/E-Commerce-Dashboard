@@ -18,6 +18,7 @@ export const fetchAllOrders = async (req: Request, res: Response) => {
         res.status(200).send(
             {
                 data: orders.map(order=>({
+                    id:order.id,
                     name:order.name,
                     email:order.email,
                     total:order.totals,

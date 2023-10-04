@@ -12,7 +12,7 @@ export const seedOrders = async () => {
 
   for (let index = 0; index < 200; index++) {
     const order = await orderRepo.save({
-      first_name: fakerEN.person.firstName(),
+      first_name: fakerEN.person.lastName(),
       last_name: fakerEN.person.lastName(),
       email: fakerEN.internet.email(),
       created_at: fakerEN.date.past({ years: 2 }).toISOString(),
