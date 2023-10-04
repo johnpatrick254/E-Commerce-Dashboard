@@ -6,10 +6,10 @@ import { useState } from "react"
 import { ProductForm } from "../components/Products/ProductForm"
 
 export const ProductPage: React.FC = () => {
-    const { id } = useParams()
+    const { id } = useParams();
     const [deleteProduct, _isLoading] = useDeleteProductMutation();
-    const { data: productData } = useGetProductByIDQuery(id!)
-    const [displayForm, setDisplayForm] = useState(false)
+    const { data: productData } = useGetProductByIDQuery(id!);
+    const [displayForm, setDisplayForm] = useState(false);
 
     return <>
         <Nav />
@@ -41,6 +41,7 @@ export const ProductPage: React.FC = () => {
             </div>
         </div>
         <ProductForm
+            id={id!}
             display={displayForm}
             name={productData?.name}
             category={productData?.category}
