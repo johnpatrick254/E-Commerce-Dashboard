@@ -13,7 +13,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-* {
+*,*::before,*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -31,6 +31,8 @@ body {
   place-items: center;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  background-color: #dddbdb;
+  padding: 0.5% 4%  ;
 }
 
 body::-webkit-scrollbar {
@@ -39,22 +41,24 @@ body::-webkit-scrollbar {
 
 
 #root {
-  overflow: hidden;
   width: 100%;
-  background-color: #dddbdb;
-  height: 100vh;
-  padding: 1% 7% 7% 2.5%;
+  min-height: 100vh;
   display: grid;
-  place-items: center;
   grid-template-areas:
     "nav"
     "main";
-  grid-template-rows: 0.75fr 6fr;
-  justify-content: center;
-  align-items: center;
+  grid-template-rows:4.5rem 92%;
+  grid-template-columns: 1fr;
+ 
 }
 
 #root:has(div.container) {
+  overflow: hidden !important;
+}
+body:has(div.user-form-container) {
+  overflow: hidden !important;
+}
+body:has(div.product-form) {
   overflow: hidden !important;
 }
 
