@@ -1,10 +1,11 @@
 import axios from "axios";
+const baseURL = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
 
 export const fetchTotalUsers = async (): Promise<number> => {
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'http://localhost:3000/api/total-users',
+    url: baseURL + '/api/total-users',
     withCredentials: true
   };
 
