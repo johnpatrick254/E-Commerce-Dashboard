@@ -42,7 +42,7 @@ const PORT = +process.env.PORT || 3000;
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
-    origin: ["http://localhost:5173", "https://vercel.com/johnpatrick254/e-commerce-dashboard/DZywzW1oYYPHHPVPgJHkmPovBnkX"],
+    origin: ["http://localhost:5173", "https://e-commerce-dashboard-2975-git-vercel-deploy-johnpatrick254.vercel.app"],
     credentials: true
 }));
 (0, routes_1.router)(app);
