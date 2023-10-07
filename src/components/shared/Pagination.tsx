@@ -1,4 +1,4 @@
-export const Pagination:React.FC<{lastPage:number,setCurrentPage:(current:number)=>void,totals:number}>=({lastPage,setCurrentPage,totals})=>{
+export const Pagination:React.FC<{lastPage:number,setCurrentPage:(current:number)=>void,totals:number}>=({lastPage,setCurrentPage})=>{
     const pages = [];
     for (let index = 0; index < lastPage; index++) {
        pages.push(1+1);

@@ -7,7 +7,7 @@ interface PieChartProps {
 }
 
 
-export const DounutChart: React.FC<PieChartProps> = ({ piData, loading }) => {
+export const DounutChart: React.FC<PieChartProps> = ({ piData}) => {
     const piRef: any = useRef(null);
     const [piChartInstance, setPiChartInstance] = useState<Chart | null>(null);
 

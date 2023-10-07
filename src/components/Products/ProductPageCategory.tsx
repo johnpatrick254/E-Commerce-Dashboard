@@ -3,7 +3,7 @@ import { ProductCard } from "./ProductCard"
 
 export const ProductPageCategory: React.FC<{ category: string }> = ({ category }) => {
 
-    const { data: productData, error, isLoading } = useGetAllProductsQuery({ page: "1", category: category })
+    const { data: productData} = useGetAllProductsQuery({ page: "1", category: category })
 
     return <>
         <div className="product-category">
