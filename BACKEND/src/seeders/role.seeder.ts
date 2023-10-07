@@ -1,4 +1,4 @@
-import { connection } from "../../config/ormconfig";
+import { connection } from "../../ormconfig";
 import { Permision } from "../entities/permision.entity";
 import { Role } from "../entities/role.entity";
 
