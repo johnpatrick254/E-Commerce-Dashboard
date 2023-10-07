@@ -67,15 +67,15 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        const errMessage = error.response.data.message
+        setIsloading(false);
+        console.log(error);
+        const errMessage = error.response.data?.message
         if (errMessage) {
-          console.log(error);
           setErrMSG(errMessage);
         } else {
           setErrMSG("");
         }
         setErr(true);
-        setIsloading(false);
       });
 
   };
