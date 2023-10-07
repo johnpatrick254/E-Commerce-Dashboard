@@ -1,7 +1,7 @@
 import { Nav } from "../components/nav/Nav";
 import "../styles/sidebar/sidebar.style.css";
 import "../styles/orders/orders.style.css";
-import { SiderBar } from "../components/sidebar/SideBar";
+import { SideBar } from "../components/sidebar/SideBar";
 import { useGetAllOrdersQuery } from "../api/Orders.slice";
 import { OrderCard } from "../components/Orders/OrderCard";
 
@@ -11,7 +11,7 @@ export const OrdersPage: React.FC = () => {
     return <>
         <Nav />
         <div className="orders-page-container">
-            <SiderBar />
+            <SideBar />
             <div className="orders">
         <h1>Orders</h1>
 

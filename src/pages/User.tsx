@@ -3,7 +3,7 @@ import { Nav } from "../components/nav/Nav";
 import "../styles/sidebar/sidebar.style.css"
 import "../styles/users/users.styles.css"
 import SearchIcon from "../assets/search-5-svgrepo-com.svg"
-import { SiderBar } from "../components/sidebar/SideBar";
+import { SideBar } from "../components/sidebar/SideBar";
 import { UserData, useGetAllUsersQuery } from "../api/Users.slice";
 import { UserCard } from "../components/Users/Usercard";
 import { useEffect, useState } from "react";
@@ -69,7 +69,7 @@ export const UsersPage: React.FC = () => {
     return <>
         <Nav />
         <div className="user-page-container">
-            <SiderBar />
+            <SideBar />
             <div className="users">
                 <div className="user-top_bar">
                     <h2>Users </h2>

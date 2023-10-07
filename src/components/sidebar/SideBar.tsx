@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SiderBarCard } from "./Sidbarcard";
 import { useNavigate } from "react-router-dom";
 
-export const SiderBar = () => {
+export const SideBar = () => {
     const navigate = useNavigate()
     const [selected, setSelected] = useState<string>('Analytics')
 
