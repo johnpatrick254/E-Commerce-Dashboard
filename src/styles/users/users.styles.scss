@@ -281,6 +281,45 @@
                 color: #000000;
             }
         }
+        .pass-container{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-flow: column nowrap;
 
+            .password {
+                width: 100%;
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: flex-start;
+                gap: 0.5rem;  
+    
+                .pass-input {
+                    width: 100%;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: flex-start;
+                    align-items: center;
+                    border: 1px solid rgb(118, 118, 118);
+                    border-radius: 4px;
+    
+                    input {
+                        width: 85%;
+                        border: none;
+                    }
+    
+                    img {
+                        width: 15%;
+                        height: 1.3rem;
+    
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+    
+            }
+    
+        }
     }
 }

@@ -3,8 +3,9 @@
   grid-area: main;
   height: 100%;
   width: 100%;
-  grid-template-areas: "sidebar main-content main-content main-content" "sidebar main-content main-content main-content" "sidebar main-content main-content main-content" "sidebar main-content main-content main-content";
+  grid-template-areas: "sidebar main-content main-content main-content" "sidebar main-content main-content main-content" "sidebar main-content main-content main-content";
   grid-template-columns: 0.7fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(1, 3fr);
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
   background-color: #f4f1f1;
@@ -16,12 +17,12 @@
   height: 100%;
   width: 100%;
   grid-area: main-content;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
   place-content: end;
   grid-template-areas: "cards cards products-charts" "sales sales top-products";
   gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 0.55fr 1fr;
+  grid-template-rows: 0.45fr 1fr;
 }
 #main-content img {
   width: 100%;
@@ -99,9 +100,8 @@
 .top-product:has(td):hover {
   cursor: pointer;
 }
-
-table:nth-child(odd) {
-  background: rgba(21, 143, 184, 0.383);
+.top-product:nth-child(even) {
+  background: #f4f1f1;
 }
 
 th {
@@ -109,6 +109,7 @@ th {
   min-width: -moz-max-content;
   min-width: max-content;
   padding-right: 0.5em;
+  background-color: #f4f1f1;
 }
 
 td {

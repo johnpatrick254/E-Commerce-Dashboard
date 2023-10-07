@@ -1,135 +1,148 @@
-#main{
+#main {
     display: grid;
     grid-area: main;
     height: 100%;
     width: 100%;
-    grid-template-areas: 
-    "sidebar main-content main-content main-content"
-    "sidebar main-content main-content main-content"
-    "sidebar main-content main-content main-content"
-    "sidebar main-content main-content main-content"
+    grid-template-areas:
+        "sidebar main-content main-content main-content"
+        "sidebar main-content main-content main-content"
+        "sidebar main-content main-content main-content"
     ;
     grid-template-columns: 0.7fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(1,3fr);
     column-gap: 0.5rem;
     background-color: #f4f1f1;
     border-radius: 0 0 8px 8px;
- 
+
 }
-#main-content{
+
+#main-content {
     display: grid;
     height: 100%;
     width: 100%;
     grid-area: main-content;
-    padding: 1rem 0.5rem ;
+    padding: 0.5rem;
     place-content: end;
     grid-template-areas:
-    "cards cards products-charts"
-    "sales sales top-products"
+        "cards cards products-charts"
+        "sales sales top-products"
     ;
     gap: 1rem;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: 0.55fr 1fr;
-    
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.45fr 1fr;
 
-    img{
+
+    img {
         width: 100%;
     }
-    button{
+
+    button {
         position: absolute;
         bottom: 10%;
         right: 50%;
     }
 }
 
-.products-charts{
+.products-charts {
     display: grid;
     grid-area: products-charts;
     width: 100%;
     height: 100%;
-    place-items:center;
+    place-items: center;
     text-align: center;
     border-radius: 4px;
     background-color: #ffffff;
     padding: 0.5rem;
     overflow: hidden;
-    .charts{
+
+    .charts {
         width: 100%;
         height: 90%;
         display: grid;
         place-items: center;
-     
+
     }
 }
-.chart-container{
+
+.chart-container {
     padding: 0.3rem;
     outline: 2px solid #eeeeee29;
     border-radius: 4px;
     width: 100%;
     height: 100%;
     background-color: #ffffff;
-   
-    canvas{
-       height: 100% !important;
+
+    canvas {
+        height: 100% !important;
     }
-    
+
 }
-.sales-analytics{
+
+.sales-analytics {
     grid-area: sales;
     width: 100%;
     height: 100%;
 }
-.admin{
+
+.admin {
     grid-area: admin;
     position: relative;
-    
+
 }
-.users{
+
+.users {
     grid-area: users;
     position: relative;
 }
-.products{
+
+.products {
     grid-area: products;
     position: relative;
-    
+
 }
 
-.top-products{
-    grid-area:top-products ;
+.top-products {
+    grid-area: top-products;
     width: 100%;
     background-color: #ffffff;
     border-radius: 4px;
     color: #000000;
     padding: 0.3em 0.5em;
-    
+
 
 }
-.top-product{
-     font-size: 0.84rem;
-     &:has(td){ 
-        &:hover{
+
+.top-product {
+    font-size: 0.84rem;
+
+    &:has(td) {
+        &:hover {
             cursor: pointer;
-        } 
-     }
-   
+        }
+    }
+    &:nth-child(even) {
+        background:#f4f1f1;
+    }
+
 }
 
-table{
-    &:nth-child(odd){
-        background: rgba(21, 143, 184, 0.383);
-    }
-}
-th{
+
+th {
     text-align: center;
     min-width: max-content;
-    padding-right:0.5em  ;
+    padding-right: 0.5em;
+    background-color:#f4f1f1 ;
 }
-td{
+
+td {
     text-align: center;
 }
-.td-name{
+
+.td-name {
     text-align: left;
 }
-.cards{
+
+.cards {
     display: grid;
     grid-area: cards;
     width: 100%;
@@ -138,7 +151,8 @@ td{
     flex-flow: row wrap;
     column-gap: 0.7rem;
 }
-.admin-card{
+
+.admin-card {
     width: 32%;
     height: 99%;
     display: flex;
@@ -147,15 +161,18 @@ td{
     color: #000000;
     border-radius: 4px;
     padding: 0.5em;
-    .admin-card-data{
+
+    .admin-card-data {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-}
-    .icon{
+    }
+
+    .icon {
         width: 25%;
     }
-    .card-chart-data{
+
+    .card-chart-data {
         width: 100%;
         height: 78%;
     }

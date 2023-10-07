@@ -257,4 +257,38 @@
   background-color: inherit;
   padding: 0.4em;
   color: #000000;
+}
+.user-form-container form .pass-container {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.user-form-container form .pass-container .password {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.user-form-container form .pass-container .password .pass-input {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius: 4px;
+}
+.user-form-container form .pass-container .password .pass-input input {
+  width: 85%;
+  border: none;
+}
+.user-form-container form .pass-container .password .pass-input img {
+  width: 15%;
+  height: 1.3rem;
+}
+.user-form-container form .pass-container .password .pass-input img:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=users.styles.css.map */
