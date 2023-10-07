@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { connection } from "../../config/ormconfig";
+import { connection } from "../../ormconfig";
 import { Orders } from "../entities/orders.entity";
 import { Parser } from "json2csv";
 
@@ -12,7 +12,8 @@ export const fetchAllOrders = async (req: Request, res: Response) => {
         const { "0": orders, "1": totals } = await repository.findAndCount({
             take: take,
             skip: ((pageNumber - 1) * take),
-            relations:['order_items']
+            relations:['order_items'],
+            order:{created_at:"DESC"}
         })
 
         res.status(200).send(
@@ -108,7 +109,7 @@ export const fetchProfitData = async (req: Request, res: Response) => {
 
 export const chartData = async(_req:Request,res:Response)=>{
     const results = await connection.query
-    ("SELECT DATE_FORMAT( o.created_at,'%y-%m-%d') AS date, SUM(i.price*i.quantity) as orders_sum FROM orders o JOIN order_item i ON O.id =i.order_id GROUP BY date ORDER BY date ASC;")
+    ("SELECT DATE_FORMAT( o.created_at,'%y-%m-%d') AS date, SUM(i.price*i.quantity) as orders_sum FROM orders o JOIN order_item i ON o.id =i.order_id GROUP BY date ORDER BY date ASC;")
     res.status(200).send(results);
 }
 export const topProductsData = async(_req:Request,res:Response)=>{
@@ -123,6 +124,6 @@ export const totalOrders = async(_req:Request,res:Response)=>{
 }
 export const totalOrdersChart = async(_req:Request,res:Response)=>{
     const results = await connection.query
-    ("SELECT DATE_FORMAT( o.created_at,'%y-%m-%d') AS name, SUM(i.quantity) as sales FROM orders o JOIN order_item i ON O.id =i.order_id GROUP BY name ORDER BY name ASC;")
+    ("SELECT DATE_FORMAT( o.created_at,'%y-%m-%d') AS name, SUM(i.quantity) as sales FROM orders o JOIN order_item i ON o.id =i.order_id GROUP BY name ORDER BY name ASC;")
     res.status(200).send(results); 
 }
