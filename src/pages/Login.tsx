@@ -1,5 +1,5 @@
 import ShowIcon from '../assets/eye-12120.svg'
-import { useState } from 'react';
+import {useState } from 'react';
 import logoIcon from "../assets/statistics-graph-stats-analytics-business-data-svgrepo-com.svg"
 import { ClipLoader } from "react-spinners"
 import { useNavigate } from 'react-router-dom';
@@ -7,33 +7,47 @@ import axios from 'axios';
 import "../styles/Login/login.css"
 const Login = () => {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [input, setInput] = useState({email:'',password:"",first_name:"",last_name:"",password_confirm:''});
+  const [isAdmin, setIsAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const [err, setErr] = useState(false);
   const [errMsg, setErrMSG] = useState('');
   const [loading, setIsloading] = useState(false);
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+  const baseURL = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
+
+
+
+  
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(prev=>{
+      const {name,value}= e.target;
+      return {
+        ...prev,
+        [name]:value
+      }
+    });
   };
 
   const handleLoginSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsloading(true);
     e.preventDefault();
-    const data = {
-      email: email,
-      password: password
+    let data;
+    let url;
+    if(isAdmin){
+      data =input  
+      url = baseURL +"/api/register " 
+    }else{
+      const {first_name,last_name,password_confirm,...authData} =input;
+      data = authData;
+      url =baseURL + '/api/login';
     }
 
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://localhost:3000/api/login',
+      url: url,
       data: data,
       withCredentials:true
     };
@@ -41,7 +55,15 @@ const Login = () => {
     axios.request(config)
       .then((response) => {
         if (response.status === 200) {
-          navigate('/')
+          if(isAdmin){
+          setErrMSG("Success, Login");
+          setIsAdmin(false);
+          setErr(true);
+          setIsloading(false)
+          }else{
+            navigate('/');
+            setIsloading(false)
+          }
         }
       })
       .catch((error) => {
@@ -61,37 +83,45 @@ const Login = () => {
   return (
     <div className="container">
       <form className='login'>
-        <div className="login-logo">
+       {!isAdmin && <div className="login-logo">
           <img src={logoIcon} alt="logo-icon" />
           <p>TychFusion Analytics</p>
-        </div>
+        </div>}
         <div className="login-actions">
           <div className="login-actions_welcome">
-            <h3>Welcome </h3>
-            <p className={err ? "err-txt" : ''}>{err ? errMsg : 'Please enter your credentials'}</p>
+            <h3>{isAdmin ? '':'Welcome' } </h3>
+            <p className={err ? "err-txt" : ''}>{err ? errMsg : (!isAdmin ? 'Please enter your credentials':"Please Sign up")}</p>
           </div>
           <div className="login-actions_options">
-            <div className={`login-actions_options-select ${isAdmin ? 'selected' : ''}`} onClick={() => {
-              setIsAdmin(true)
-            }}>
-              <p>User Sign in</p>
-            </div>
             <div className={`login-actions_options-select ${!isAdmin ? 'selected' : ''}`} onClick={() => {
               setIsAdmin(false)
             }}>
+              <p>User Sign in</p>
+            </div>
+            <div className={`login-actions_options-select ${isAdmin ? 'selected' : ''}`} onClick={() => {
+              setIsAdmin(true)
+            }}>
 
-              <p>Admin Sign</p>
+              <p>Register</p>
             </div>
           </div>
           <div onSubmit={handleLoginSubmit} className="login-actions_input">
+            { isAdmin && <><div className="email" >
+              <p>First Name</p>
+              <input type='text' name='first_name'required onChange={handleInputChange} value={input.first_name} />
+            </div>
             <div className="email" >
-              <p>Username</p>
-              <input type='text' required onChange={handleEmailChange} value={email} />
+              <p>Last Name</p>
+              <input type='text' name='last_name' required onChange={handleInputChange} value={input.last_name} />
+            </div></>}
+            <div className="email" >
+              <p>Email</p>
+              <input type='text' name='email' required onChange={handleInputChange} value={input.email} />
             </div>
             <div className="password"  >
               <p>Password</p>
               <div className="pass-input">
-                <input type={showPassword ? 'password' : 'text'} required onChange={handlePasswordChange} value={password} />
+                <input name='password' type={showPassword ? 'password' : 'text'} required onChange={handleInputChange} value={input.password} />
                 <img src={ShowIcon} alt="show password"
                   onClick={() => {
                     setShowPassword(!showPassword);
@@ -99,13 +129,32 @@ const Login = () => {
                 />
               </div>
             </div>
+            {isAdmin  && <div className="password"  >
+              <p>Confirm Password</p>
+              <div className="pass-input">
+                <input name='password_confirm' type={showPassword ? 'password' : 'text'} required onChange={(e)=>{
+                   if(input.password !== e.target.value){
+                    setErrMSG("Password Do not match")
+                    setErr(true);
+                  }else{
+                    setErr(false)
+                  }
+                  handleInputChange(e)
+                }} value={input.password_confirm} />
+                <img src={ShowIcon} alt="show password"
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                  }}
+                />
+              </div>
+            </div>}
           </div>
         </div>
-        <div className="login-submit">
+        { <div className="login-submit">
           {loading ? <ClipLoader color="#36d7b7" size={"1.7rem"} /> : <button type='submit' onClick={(e: any) => {
             handleLoginSubmit(e)
-          }}>Sign in</button>}
-        </div>
+          }}>{isAdmin ? "Sign Up":"Sign in"}</button>}
+        </div>}
       </form>
     </div>
   );
