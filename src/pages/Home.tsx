@@ -33,8 +33,9 @@ export const Home = () => {
         })
     }
     useEffect(() => {
+        const baseURL = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
         const fetchTopProducts = async () => {
-            await axios.get("http://localhost:3000/api/top-products", {
+            await axios.get(baseURL+"/api/top-products", {
                 withCredentials: true
             }).then(res => {
                 if (res.status == 200) {
