@@ -10,6 +10,7 @@ import { ProductPage } from "./pages/ProductPage";
 import { ProductsPage } from "./pages/ProductsPage";
 import { UsersPage } from "./pages/User";
 import { OrdersPage } from "./pages/Orders";
+import { Profile } from "./pages/Profile";
 
 const fetchAuthenticatedUser = async (setUser: Function) => {
   const user = await axios.get("http://localhost:3000/api/user", {
@@ -39,8 +40,10 @@ function App() {
     const setUser = async () => {
       fetchAuthenticatedUser(setAuthUser);
     }
-    setUser()
-  }, [])
+    if(authUser === null){
+      setUser()
+    }
+  }, [authUser])
   return (
     <>
       <UserProvider.Provider value={authUser}>
@@ -50,9 +53,10 @@ function App() {
             <Route path="/login" Component={Login} />
             <Route path="/products/:id" Component={ProductPage} />
             <Route path="/products" Component={ProductsPage} />
-            <Route path="/user" Component={UsersPage} />
+            <Route path="/users" Component={UsersPage} />
+            <Route path="/profile" Component={Profile} />
             <Route path="/orders" Component={OrdersPage} />
-          </Routes>
+          </Routes> 
         </Router>
       </UserProvider.Provider>
 
