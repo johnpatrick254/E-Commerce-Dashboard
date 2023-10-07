@@ -1,6 +1,6 @@
 import { Request, RequestHandler } from "express";
 import { RegisterValidation, loginValidation, passwordValidation } from "../validators/register.validation";
-import { connection } from "../../config/ormconfig";
+import { connection } from "../../ormconfig";
 import { User } from "../entities/user.entity";
 import bcrypt from "bcryptjs"
 import { sign} from "jsonwebtoken";
@@ -9,19 +9,20 @@ import { seedPerms } from "../seeders/role.seeder";
 
 
 export const register: RequestHandler = async (req, res) => {
-    const { first_name, last_name, email, password, password_confirm } = req.body
+    const {password, password_confirm,...data } = req.body
     const { error } = RegisterValidation.validate(req.body);
     if (error) return res.status(400).send(error.details);
     if (password !== password_confirm) return res.status(400).send({ message: "Passwords Do not match" });
     const repository = connection.getRepository(User);
-    const newUser = new User();
-    newUser.first_name = first_name,
-        newUser.last_name = last_name,
-        newUser.email = email,
-        newUser.password = await bcrypt.hash(password, 3)
-
+    const hashedPassword = await bcrypt.hash(password, 3)
     try {
-        const { password, id, ...userData } = await repository.save(newUser)
+        const { password, id, ...userData } = await repository.save({
+            ...data,
+            password:hashedPassword,
+            role:{
+                id:1
+            }
+        })
         res.status(200).send(userData)
     } catch (error) {
         res.status(403).send({

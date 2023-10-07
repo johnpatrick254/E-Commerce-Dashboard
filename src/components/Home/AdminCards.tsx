@@ -56,9 +56,9 @@ export const AdminCard: React.FC<AdminCardProp> = ({ name, icon,dataKey }) => {
     return <>
         <div className="admin-card">
             <div className="admin-card-data">
-                <div className="text">
-                    <h2>{totals && totals}+</h2>
-                    <p>Total {name}</p>
+                <div className="text"  >
+                    <h2 style={totals ? (totals >=0 ?{color:"green"}:{color:"red"}):{}}>{totals && (totals >=0 ?totals+"+":totals) }</h2>
+                    <p>Total {name !== "Profits" ? name:(totals && totals >=0 ?"Profits $":"Loss $")}</p>
                 </div>
                 <div className="icon">
                     <img src={icon} alt="card icon" />

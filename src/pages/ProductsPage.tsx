@@ -2,7 +2,7 @@ import { ProductPageCategory } from "../components/Products/ProductPageCategory"
 import { Nav } from "../components/nav/Nav";
 import "../styles/sidebar/sidebar.style.css"
 import "../styles/products-page/products-page.style.css"
-import { SiderBar } from "../components/sidebar/SideBar";
+import { SideBar } from "../components/sidebar/SideBar";
 import { useState } from "react";
 import { ProductForm } from "../components/Products/ProductForm";
 
@@ -21,7 +21,7 @@ export const ProductsPage: React.FC = () => {
     return <>
         <Nav />
         <div className="products-page-container">
-            <SiderBar />
+            <SideBar />
             <div className="categories">
                 <div className="products-header">  <p onClick={()=>{setDisplayForm(true)}}>Add Product</p></div>
                 {

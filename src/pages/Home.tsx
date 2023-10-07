@@ -1,7 +1,7 @@
 import { BarSalesChart } from "../components/Charts/BarChart";
 import { ChartContainer } from "../components/Charts/ChartContainer";
 import { Nav } from "../components/nav/Nav";
-import { SiderBar } from "../components/sidebar/SideBar";
+import { SideBar } from "../components/sidebar/SideBar";
 import { ToastContainer } from 'react-toastify';
 import "./../styles/home/home.style.css"
 import axios from "axios";
@@ -54,7 +54,7 @@ export const Home = () => {
     return <>
         <Nav />
         <section id="main">
-            <SiderBar />
+            <SideBar />
             <article id="main-content">
                 <div className="cards">
                     <AdminCard

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useUserContext } from "../../contexts/useContexts";
 import { useEffect, useState } from "react";
+const baseURL = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
 export const Nav = () => {
   const navigate = useNavigate()
   const authUser = useUserContext();
@@ -14,7 +15,7 @@ export const Nav = () => {
   const [showLogoout, setShowLogout]=useState<boolean>(true)
   useEffect(()=>{
     const checkLogin = async () => {
-      await axios.get("http://localhost:3000/api/user", {
+      await axios.get( baseURL + "/api/user", {
           withCredentials: true
       }).then(res => {
           if (res.status != 200) {
@@ -35,7 +36,7 @@ export const Nav = () => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://localhost:3000/api/logout',
+      url: baseURL + '/api/logout',
       withCredentials:true
     };
     

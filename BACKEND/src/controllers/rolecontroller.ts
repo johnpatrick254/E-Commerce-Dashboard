@@ -1,5 +1,5 @@
 import { Request, Response } from "express-serve-static-core";
-import { connection } from "../../config/ormconfig"
+import { connection } from "../../ormconfig"
 import { Role } from "../entities/role.entity";
 
 export const roles = async(_req:Request,res:Response)=>{

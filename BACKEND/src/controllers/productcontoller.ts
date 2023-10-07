@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { connection } from "../../config/ormconfig";
+import { connection } from "../../ormconfig";
 import { Product } from "../entities/product.entity";
 
 export const fetchAllProducts = async (req: Request, res: Response) => {

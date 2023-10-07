@@ -1,13 +1,14 @@
 import axios from "axios";
 import { OrdersData } from "./OrdersData";
 
+const baseURL = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
 
 
 export const fetchTotalOrdersChartData = async (): Promise<OrdersData | null> => {
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'http://localhost:3000/api/total-orders-chart',
+    url: baseURL + '/api/total-orders-chart',
     withCredentials: true
   };
 

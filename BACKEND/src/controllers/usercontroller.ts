@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { User } from "../entities/user.entity";
-import { connection } from "../../config/ormconfig";
+import { connection } from "../../ormconfig";
 import { hash } from "bcryptjs"
 
 export const fetchAllUsers = async (req: Request, res: Response) => {
@@ -40,7 +40,7 @@ export const createUsers = async (req: Request, res: Response) => {
         const password = await hash(setPassword, 10);
         const repository = connection.getRepository(User);
         const { password: hashedPass,password_confirm, ...user } = await repository.save({
-            ...body,
+            ...body, 
             password: password,
             role:{
                 id:role_id

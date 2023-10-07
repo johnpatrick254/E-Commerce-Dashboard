@@ -1,4 +1,4 @@
-import { connection } from "../../config/ormconfig";
+import { connection } from "../../ormconfig";
 import { fakerEN } from "@faker-js/faker";
 import { Orders } from "../entities/orders.entity";
 import { randomInt } from "crypto";

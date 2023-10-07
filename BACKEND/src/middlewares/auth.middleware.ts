@@ -1,6 +1,6 @@
 import { Request, RequestHandler } from "express";
 import { verify } from "jsonwebtoken";
-import { connection } from "../../config/ormconfig";
+import { connection } from "../../ormconfig";
 import { User } from "../entities/user.entity";
 
 interface RequestUser extends Request {

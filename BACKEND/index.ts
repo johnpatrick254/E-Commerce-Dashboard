@@ -1,16 +1,16 @@
-
 import  express  from "express";
 import cors from "cors"
-import { connection } from "../config/ormconfig";
-import { router } from "./routes/routes";
+import { connection } from "./ormconfig";
+import { router } from "./src/routes/routes";
 import cookieParser from "cookie-parser"
 import { exit } from "process";
-
+import * as dotenv from "dotenv"
+dotenv.config()
 
 if(!connection.initialize())exit();
 
 const app = express();
-const PORT:number | string = process.env.VITE_PORT || 3000 ;
+const PORT:number= +process.env.PORT || 3000 ; 
 
 app.use(express.json());
 app.use(cookieParser())
@@ -20,7 +20,7 @@ app.use(cors({
 }));
 
 router(app);
-
+ 
 app.listen(PORT ,():void=>{
 console.log(`Server running on port: ${PORT}`)
 })
