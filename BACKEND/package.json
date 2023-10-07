@@ -3,18 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon dist/index.js",
-    "roles:seed": "ts-node src/seeders/role.seeder.ts",
-    "build": "rimraf dist && tsc",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist"
+    "tsc": "tsc",
+    "roles:seed": "ts-node src/seeders/role.seeder.ts"
   },
   "author": "johnpatrick254",
   "license": "MIT",
