@@ -16,12 +16,12 @@ export const sideBarcards: SideBarCardProps[] = [
   {
     compIcon: AdminIcon,
     nextIcon: nextIcon,
-    name: "Admin",
+    name: "Profile",
   },
   {
     compIcon: userIcon,
     nextIcon: nextIcon,
-    name: "User",
+    name: "Users",
   },
   {
     compIcon: productIcon,
