@@ -3,7 +3,7 @@ import { ChartContainer } from "../components/Charts/ChartContainer";
 import { Nav } from "../components/nav/Nav";
 import { SideBar } from "../components/sidebar/SideBar";
 import { ToastContainer } from 'react-toastify';
-import "./../styles/home/home.style.css"
+import "../styles/Home/home.style.css"
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { TopSellingProduct } from "../components/Home/TopSellingProduct";
