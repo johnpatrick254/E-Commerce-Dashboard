@@ -13,9 +13,11 @@ export const UsersPage: React.FC = () => {
     const { data: users } = useGetAllUsersQuery(1);
     const [showEditForm, setShowEditForm] = useState<{
         show: boolean,
+        isAdding:boolean,
         data: UserData
     }>({
         show: false,
+        isAdding:false,
         data: {
             id: 1,
             first_name: "",
@@ -50,6 +52,7 @@ export const UsersPage: React.FC = () => {
     const handleCancelForm = () => {
         setShowEditForm({
             show: false,
+            isAdding:false,
             data: {
                 id: 1,
                 first_name: "",
@@ -57,7 +60,7 @@ export const UsersPage: React.FC = () => {
                 email: "",
                 role: {
                     name: "",
-                    id: 1
+                    id: 3
                 }
             }
         })
@@ -75,7 +78,15 @@ export const UsersPage: React.FC = () => {
                             <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
                             <img src={SearchIcon} alt="search-bar" />
                         </div>
-                        <button className="add-user">Add User</button>
+                        <button className="add-user" onClick={()=>{
+                            setShowEditForm(prev=>{
+                                return{
+                                    ...prev,
+                                    ['show']:true,
+                                    ['isAdding']:true
+                                }
+                            })
+                        }}>Add User</button>
                     </div>
                 </div>
                 <div className="user-container user-header">
@@ -115,6 +126,7 @@ export const UsersPage: React.FC = () => {
                     email={showEditForm.data.email}
                     role={showEditForm.data.role}
                     handleCancelForm={handleCancelForm}
+                    isAdding={showEditForm.isAdding}
                 />} 
     </>
 }
