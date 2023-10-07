@@ -1,11 +1,12 @@
 import  express  from "express";
 import cors from "cors"
-import { connection } from "./ormconfig";
-import { router } from "./src/routes/routes";
+import { connection } from "../ormconfig";
+import { router } from "../src/routes/routes";
 import cookieParser from "cookie-parser"
 import { exit } from "process";
 import * as dotenv from "dotenv"
-dotenv.config()
+import path from "path";
+dotenv.config({path:path.resolve(__dirname, '..','.env')});
 
 if(!connection.initialize())exit();
 
