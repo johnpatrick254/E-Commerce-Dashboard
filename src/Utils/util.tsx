@@ -1,5 +1,5 @@
 import axios from "axios"
-
+const baseURL = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
 export interface AuthenicatedUser {
   id: number;
   first_name: string;
@@ -13,7 +13,7 @@ export interface AuthenicatedUser {
   }
 }
 export const fetchAuthenticatedUser = async () => {
-  const user = await axios.get("http://localhost:3000/api/user", {
+  const user = await axios.get(baseURL , {
     withCredentials: true
   }).then(res => {
     if (res.status == 200) {
