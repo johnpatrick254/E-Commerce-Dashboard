@@ -7,7 +7,7 @@ import axios from 'axios';
 import "../styles/Login/login.css"
 const Login = () => {
   const navigate = useNavigate()
-  const [input, setInput] = useState({email:'',password:"",first_name:"",last_name:"",password_confirm:''});
+  const [input, setInput] = useState({email:'demo@mail.com',password:"1234",first_name:"",last_name:"",password_confirm:''});
   const [isAdmin, setIsAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const [err, setErr] = useState(false);
