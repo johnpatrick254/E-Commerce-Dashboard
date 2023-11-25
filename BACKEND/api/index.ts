@@ -16,7 +16,7 @@ const PORT:number= +process.env.PORT || 3000 ;
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors({
-    origin:"*",
+    origin:"https://e-commerce-dashboard-rh94.vercel.app",
     credentials:true
 }));
 
