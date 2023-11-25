@@ -42,7 +42,7 @@ const PORT = +process.env.PORT || 3000;
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
-    origin:"*",
+    origin:"https://e-commerce-dashboard-rh94.vercel.app",
     credentials: true
 }));
 (0, routes_1.router)(app);
