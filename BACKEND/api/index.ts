@@ -15,7 +15,7 @@ connection.initialize().then(() => {
         app.use(express.json());
         app.use(cookieParser())
         app.use(cors({
-        origin:"https://e-commerce-dashboard-rh94.vercel.app",
+        origin:["https://e-commerce-dashboard-rh94.vercel.app","http://localhost:5173"],
         credentials:true
         }));
 
@@ -27,6 +27,7 @@ connection.initialize().then(() => {
     })
     .catch((error) => {
         console.log(error);
+        exit(0)
     });
 
 

@@ -35,17 +35,21 @@ const process_1 = require("process");
 const dotenv = __importStar(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 dotenv.config({ path: path_1.default.resolve(__dirname, '..', '.env') });
-if (!ormconfig_1.connection.initialize())
-    (0, process_1.exit)();
-const app = (0, express_1.default)();
-const PORT = +process.env.PORT || 3000;
-app.use(express_1.default.json());
-app.use((0, cookie_parser_1.default)());
-app.use((0, cors_1.default)({
-    origin:"https://e-commerce-dashboard-rh94.vercel.app",
-    credentials: true
-}));
-(0, routes_1.router)(app);
-app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
+ormconfig_1.connection.initialize().then(() => {
+    const app = (0, express_1.default)();
+    const PORT = +process.env.PORT || 3000;
+    app.use(express_1.default.json());
+    app.use((0, cookie_parser_1.default)());
+    app.use((0, cors_1.default)({
+        origin: ["https://e-commerce-dashboard-rh94.vercel.app", "http://localhost:5173"],
+        credentials: true
+    }));
+    (0, routes_1.router)(app);
+    app.listen(PORT, () => {
+        console.log(`Server running on port: ${PORT}`);
+    });
+})
+    .catch((error) => {
+    console.log(error);
+    (0, process_1.exit)(0);
 });

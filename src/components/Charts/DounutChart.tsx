@@ -11,6 +11,7 @@ export const DounutChart: React.FC<PieChartProps> = ({ piData}) => {
     const piRef: any = useRef(null);
     const [piChartInstance, setPiChartInstance] = useState<Chart | null>(null);
 
+console.log("\nPIE DATA",piData);
 
 
     useEffect(() => {
