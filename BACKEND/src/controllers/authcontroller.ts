@@ -52,6 +52,7 @@ export const login: RequestHandler = async (req, res) => {
             "userinfo",
             token, {
             httpOnly: true,
+            sameSite:true,
             maxAge: 24 * 60 * 60 * 1000 //24HRS
         }
         )
