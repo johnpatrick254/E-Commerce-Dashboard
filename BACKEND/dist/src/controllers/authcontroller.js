@@ -54,7 +54,8 @@ const login = async (req, res) => {
         const token = (0, jsonwebtoken_1.sign)(payload, "secret");
         res.cookie("userinfo", token, {
             httpOnly: true,
-            sameSite: true,
+            sameSite: 'None',
+            secure: true,
             maxAge: 24 * 60 * 60 * 1000
         });
         res.status(200).send({
