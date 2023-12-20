@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
   grid-template-areas:
     "nav"
     "main";
-  grid-template-rows:4.5rem 92%;
+  grid-template-rows:4.3rem 92%;
   grid-template-columns: 1fr;
  
 }
