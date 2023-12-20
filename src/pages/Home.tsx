@@ -104,7 +104,7 @@ export const Home = () => {
                         <tbody>
                             {
                                 topProducts && topProducts.map((product, i) => {
-                                    if (i > 4) return;
+                                    if (i > 6) return;
                                     return <TopSellingProduct
                                         key={i}
                                         rank={(i + 1)}
