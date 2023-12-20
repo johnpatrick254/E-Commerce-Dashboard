@@ -26,8 +26,8 @@ html {
 body {
   min-height: 100vh;
   min-width: 100vw;
-  max-width: 1275px;
   display: grid;
+  max-width: 1275px;
   place-items: center;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -42,7 +42,7 @@ body::-webkit-scrollbar {
 
 #root {
   width: 100%;
-  min-height: 100vh;
+  min-height: 850px;
   display: grid;
   grid-template-areas:
     "nav"
