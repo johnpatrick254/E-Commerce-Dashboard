@@ -20,6 +20,7 @@ export const router =async (router:Router)=>{
     router.get("/seed/permisions",seedPerms)
     router.get("/seed/products",seedProducts)
     router.get("/seed/orders",seedOrders)
+    router.get("/heath/orders",(_req,res)=>res.status(200).send({status:'ok'}))
 
      ///////////////////
     //API ROUTES  //////
