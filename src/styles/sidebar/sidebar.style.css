@@ -1,19 +1,30 @@
 #sidebar {
-  width: 100%;
-  grid-area: sidebar;
-  padding: 1.8em;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1em;
   display: flex;
+  position: fixed;
+  transition: all 150ms ease-in-out;
   flex-flow: column nowrap;
   gap: 2rem;
-  background-color: #fffdfd;
-  border-radius: 0 0 0 8px;
-  height: 100%;
+  background-color: #ffffff;
+  border-radius: 0 0 8px 8px;
+  height: 90vh;
+}
+@media screen and (max-width: 1024px) {
+  #sidebar {
+    position: fixed;
+    width: -moz-fit-content;
+    width: fit-content;
+    z-index: 55;
+    left: -180px;
+    height: 100vh;
+  }
 }
 #sidebar .sidebar-container {
-  position: sticky;
-  top: 0;
-  width: 100%;
   display: flex;
+  position: relative;
+  width: 100%;
   flex-flow: column nowrap;
   gap: 2rem;
 }
@@ -52,4 +63,27 @@
   height: 2rem;
   border-radius: 50%;
   background-color: #EEEEEE;
+}
+
+#drawer-icon {
+  width: 2rem;
+  height: 2rem;
+  z-index: 55;
+  background-color: #fffdfd;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  rotate: 90deg;
+}
+#drawer-icon :hover {
+  cursor: pointer;
+}
+@media screen and (min-width: 1025px) {
+  #drawer-icon {
+    display: none;
+  }
+}
+#drawer-icon svg {
+  height: 100%;
+  width: 100%;
 }/*# sourceMappingURL=sidebar.style.css.map */

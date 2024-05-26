@@ -1,14 +1,15 @@
 .user-page-container {
   display: grid;
   grid-area: main;
-  height: 100%;
+  height: 90vh;
+  padding-top: 0.2rem;
   width: 100%;
   position: relative;
   grid-template-areas: "sidebar main-content main-content main-content" "sidebar main-content main-content main-content" "sidebar main-content main-content main-content" "sidebar main-content main-content main-content";
   grid-template-columns: 0.7fr 1fr 1fr 1fr;
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
-  background-color: #f4f1f1;
+  margin-top: 3.5rem;
   border-radius: 0 0 8px 8px;
   overflow-y: auto;
   white-space: nowrap;
@@ -34,6 +35,45 @@
   padding: 1rem;
   min-height: 100%;
   color: #000000;
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  /* Medium devices (landscape tablets, 768px and up) */
+  /* Large devices (laptops/desktops, 992px and up) */
+}
+@media only screen and (min-width: 300px) {
+  .user-page-container .users {
+    width: 100vh;
+    margin-left: 1.5rem;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .user-page-container .users {
+    width: 80vh;
+    margin-left: 1.1rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .user-page-container .users {
+    width: 80vh;
+    margin-left: -3rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .user-page-container .users {
+    width: 100vh;
+    margin-left: -10rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .user-page-container .users {
+    width: 100%;
+    margin-left: -3rem;
+  }
+}
+@media screen and (min-width: 1367px) {
+  .user-page-container .users {
+    width: 100%;
+    margin-left: -6rem;
+  }
 }
 .user-page-container .users .user-header {
   align-items: center;
@@ -138,8 +178,13 @@
 .user-page-container .users .user-container .action-button:hover {
   cursor: pointer;
 }
+.user-page-container .users .user-container p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .user-page-container .users .user-container .user-details {
-  width: 17%;
+  width: 25%;
   text-align: left;
   margin-right: 0.7em;
 }
@@ -225,24 +270,29 @@
 .user-form-container form label {
   font-weight: 700;
 }
-.user-form-container form .header, .user-form-container form .footer {
+.user-form-container form .header,
+.user-form-container form .footer {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
   gap: 5rem;
 }
-.user-form-container form .header div, .user-form-container form .footer div {
+.user-form-container form .header div,
+.user-form-container form .footer div {
   display: inherit;
   gap: 0.5rem;
 }
-.user-form-container form .header div:has(input.product-name), .user-form-container form .footer div:has(input.product-name) {
+.user-form-container form .header div:has(input.product-name),
+.user-form-container form .footer div:has(input.product-name) {
   width: 40%;
 }
-.user-form-container form .header div:has(input.product-name) input, .user-form-container form .footer div:has(input.product-name) input {
+.user-form-container form .header div:has(input.product-name) input,
+.user-form-container form .footer div:has(input.product-name) input {
   width: 50%;
 }
-.user-form-container form .header div input, .user-form-container form .footer div input {
+.user-form-container form .header div input,
+.user-form-container form .footer div input {
   color: #000000;
   border: none;
   border-bottom: 1px solid black;

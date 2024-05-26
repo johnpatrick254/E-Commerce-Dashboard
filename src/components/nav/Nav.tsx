@@ -33,6 +33,7 @@ export const Nav = () => {
 }
   
    const logOut = () => {
+     navigate('/login');
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
@@ -43,7 +44,6 @@ export const Nav = () => {
     axios.request(config)
     .then((response) => {
       if(response.status == 200){
-        navigate('/login')
       }
     })
     .catch((error) => {

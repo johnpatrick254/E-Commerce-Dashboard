@@ -1,27 +1,33 @@
 #nav {
   display: flex;
+  position: fixed;
+  z-index: 50;
+  top: 0;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  height: 3.5rem;
   width: 100%;
+  padding: 0.5em 2%;
   color: #000000;
-  border-radius: 8px 8px 0 0;
-  grid-area: nav;
-  padding: 1.15em 2em;
   background-color: #ffffff;
   border-bottom: 1px solid #EEEEEE;
+  font-size: 0.8555rem;
+}
+@media screen and (min-width: 1400px) {
+  #nav {
+    padding: 0.5em 8%;
+  }
 }
 #nav #logo {
   height: 2rem;
-  width: 12rem;
+  width: 15rem;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   -moz-column-gap: 0.5em;
        column-gap: 0.5em;
   flex-flow: row nowrap;
-  font-size: 0.6555rem;
   border-radius: 3px;
   padding: 0.3em 0;
 }
@@ -36,6 +42,11 @@
 }
 #nav #logo h3 {
   line-break: anywhere;
+}
+@media screen and (max-width: 768px) {
+  #nav #logo h3 {
+    display: none;
+  }
 }
 #nav #login {
   min-width: -moz-max-content;
@@ -54,12 +65,17 @@
   font-size: 1rem;
   font-weight: 700;
 }
+@media screen and (max-width: 768px) {
+  #nav #login {
+    display: none;
+  }
+}
 #nav .logout {
   position: relative;
   min-width: -moz-max-content;
   min-width: max-content;
   height: 100%;
-  gap: 0.5em;
+  gap: 1rem;
   padding: 3px;
   border-radius: 4px;
   display: flex;

@@ -90,13 +90,13 @@ const Login = () => {
         <div className="login-actions">
           <div className="login-actions_welcome">
             <h3>{isAdmin ? '':'Welcome' } </h3>
-            <p className={err ? "err-txt" : ''}>{err ? errMsg : (!isAdmin ? 'Please enter your credentials':"Please Sign up")}</p>
+            {!isAdmin && <p className={err ? "err-txt" : ''}>{err ? errMsg : ( 'Please enter your credentials')}</p>}
           </div>
           <div className="login-actions_options">
             <div className={`login-actions_options-select ${!isAdmin ? 'selected' : ''}`} onClick={() => {
               setIsAdmin(false)
             }}>
-              <p>User Sign in</p>
+              <p>Sign in</p>
             </div>
             <div className={`login-actions_options-select ${isAdmin ? 'selected' : ''}`} onClick={() => {
               setIsAdmin(true)

@@ -2,6 +2,8 @@
     display: grid;
     grid-area: main;
     height: 100%;
+    margin-top: 3.5rem;
+    padding: 0.3rem;
     width: 100%;
     position: relative;
     grid-template-areas:
@@ -12,7 +14,6 @@
     ;
     grid-template-columns: 0.7fr 1fr 1fr 1fr;
     column-gap: 0.5rem;
-    background-color: #f4f1f1;
     border-radius: 0 0 8px 8px;
     overflow-y: auto;
     white-space: nowrap;
@@ -34,56 +35,109 @@
         color: #000000;
         display: flex;
         flex-flow: column nowrap;
-        row-gap: 1rem;
-          .order-card-title{
-            p{
+        gap: 1rem;
+        height: max-content;
+        margin-left: -9.5rem;
+
+        @media only screen and (min-width:300px) {
+            width: 100vh;
+            margin-left: 1.5rem;
+
+        }
+
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) {
+            width: 100vh;
+            margin-left: 1.5rem;
+        }
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) {
+            width: 80vh;
+            margin-left: 1.5rem;
+        }
+
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) {
+            width: 100vh;
+            margin-left: -10rem;
+        }
+
+
+        @media screen and (min-width:1200px) {
+            width: 100%;
+            margin-left: -3rem;
+        }
+
+        @media screen and (min-width:1367px) {
+            width: 100%;
+            margin-left: -6rem;
+        }
+
+        .order-card-title {
+            p {
                 font-weight: 700;
             }
-          }
+        }
+
         .order-card {
             display: flex;
             flex-flow: column nowrap;
             width: 100%;
-            height: 1.8rem;
+            height: 1.6rem;
             row-gap: 0.5rem;
             overflow: hidden;
-            transition:all 500ms linear;
-            &:nth-child(odd){
+            transition: all 500ms linear;
+
+            &:nth-child(odd) {
                 background-color: #f4f1f1;
             }
-            &:hover{
+
+            &:hover {
                 cursor: pointer;
             }
-            padding: 0 0.5em; 
+
+            padding: 0.5em;
             border-radius: 4px;
-            
+
             .order {
                 display: flex;
                 flex-flow: row nowrap;
                 width: 100%;
-               
-                .order-number{
+
+                p {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .order-number {
                     margin-right: 0.5em;
                     width: 1.5rem;
                 }
-                .customer-name{
+
+                .customer-name {
                     margin-right: 0.5em;
                     width: 20%;
                 }
-                .customer-mail{
+
+                .customer-mail {
                     margin-right: 0.5em;
-                    width: 28%;
+                    width: 25%;
                 }
-                .purchase-date{
+
+                .purchase-date {
                     width: 18%;
                     margin-right: 0.5em;
                 }
-                .amount{
+
+                .amount {
                     margin-right: 0.5em;
-                    width: 3rem;
+                    width: 4rem;
 
                 }
-                .dropdown{
+
+                .dropdown {
                     margin-right: 0.5em;
                     width: 1.5rem;
 

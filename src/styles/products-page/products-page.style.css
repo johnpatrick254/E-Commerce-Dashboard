@@ -3,16 +3,18 @@
   grid-area: main;
   height: 100%;
   width: 100%;
+  margin-top: 3.5rem;
   grid-template-areas: "sidebar main-content main-content main-content" "sidebar main-content main-content main-content" "sidebar main-content main-content main-content" "sidebar main-content main-content main-content";
   grid-template-columns: 0.7fr 1fr 1fr 1fr;
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
-  background-color: #f4f1f1;
   border-radius: 0 0 8px 8px;
   overflow-y: auto;
   white-space: nowrap;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
   place-items: start;
 }
 .products-page-container::-webkit-scrollbar {
@@ -28,8 +30,49 @@
   width: 100%;
   height: 100%;
   padding: 0.5rem 0.2rem;
+  margin-top: 0.3rem;
   background-color: white;
   position: relative;
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  /* Medium devices (landscape tablets, 768px and up) */
+  /* Large devices (laptops/desktops, 992px and up) */
+}
+@media only screen and (min-width: 300px) {
+  .products-page-container .categories {
+    width: -moz-max-content;
+    width: max-content;
+    margin-left: 1.5rem;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .products-page-container .categories {
+    width: 100vh;
+    margin-left: 1.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .products-page-container .categories {
+    width: 80vh;
+    margin-left: -3rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .products-page-container .categories {
+    width: 100vh;
+    margin-left: -10rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .products-page-container .categories {
+    width: 100%;
+    margin-left: -2rem;
+  }
+}
+@media screen and (min-width: 1367px) {
+  .products-page-container .categories {
+    width: 100%;
+    margin-left: -6rem;
+  }
 }
 .products-page-container .categories .products-header {
   width: 100%;
@@ -77,14 +120,17 @@
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 .products-page-container .categories .product-category .products::-webkit-scrollbar {
   display: none;
 }
 .products-page-container .categories .product-category .products .product-card {
-  width: 30%;
+  max-width: 12rem;
+  min-width: 12rem;
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -101,6 +147,8 @@
 .products-page-container .categories .product-category .products .product-card .product-card_image img {
   width: 100%;
   height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .products-page-container .categories .product-category .products .product-card .product-card_details {
   display: flex;
@@ -172,24 +220,29 @@
 .product-form form label {
   font-weight: 700;
 }
-.product-form form .header, .product-form form .footer {
+.product-form form .header,
+.product-form form .footer {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
   gap: 5rem;
 }
-.product-form form .header div, .product-form form .footer div {
+.product-form form .header div,
+.product-form form .footer div {
   display: inherit;
   gap: 0.5rem;
 }
-.product-form form .header div:has(input.product-name), .product-form form .footer div:has(input.product-name) {
+.product-form form .header div:has(input.product-name),
+.product-form form .footer div:has(input.product-name) {
   width: 40%;
 }
-.product-form form .header div:has(input.product-name) input, .product-form form .footer div:has(input.product-name) input {
+.product-form form .header div:has(input.product-name) input,
+.product-form form .footer div:has(input.product-name) input {
   width: 50%;
 }
-.product-form form .header div input, .product-form form .footer div input {
+.product-form form .header div input,
+.product-form form .footer div input {
   color: #000000;
   border: none;
   border-bottom: 1px solid black;

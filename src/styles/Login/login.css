@@ -7,10 +7,10 @@ input {
 }
 
 .container {
-  width: 100vw;
-  height: 100vh;
   display: flex;
-  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  flex: 1;
   background-color: #dddbdb;
   justify-content: center;
   align-items: center;
@@ -19,14 +19,13 @@ input {
 .container .login {
   background-color: #ffffff;
   width: 72%;
-  min-height: -moz-max-content;
-  min-height: max-content;
-  padding: 4% 2%;
+  min-height: 560px;
+  padding: 2% 2%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   border-radius: 0.7rem;
   box-shadow: 1px -1px 9px 2px rgba(25, 26, 25, 0.75);
   -webkit-box-shadow: 1px -1px 9px 2px rgba(49, 49, 50, 0.75);
@@ -36,9 +35,10 @@ input {
   /* Large devices (laptops/desktops, 992px and up) */
   /* Extra large devices (large laptops and desktops, 1200px and up) */
 }
-@media only screen and (max-width: 600px) and (min-width: 400px) {
+@media only screen and (max-width: 400px) {
   .container .login {
-    width: 62%;
+    width: 85%;
+    padding: 8% 2%;
   }
 }
 @media only screen and (min-width: 600px) {
@@ -84,7 +84,7 @@ input {
 .container .login .login-actions {
   width: 100%;
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-flow: column nowrap;
   align-items: center;
 }
