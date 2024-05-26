@@ -3,13 +3,13 @@ import { RegisterValidation, loginValidation, passwordValidation } from "../vali
 import { connection } from "../../ormconfig";
 import { User } from "../entities/user.entity";
 import bcrypt from "bcryptjs"
-import { sign} from "jsonwebtoken";
+import { sign } from "jsonwebtoken";
 import { seedPerms } from "../seeders/role.seeder";
 
 
 
 export const register: RequestHandler = async (req, res) => {
-    const {password, password_confirm,...data } = req.body
+    const { password, password_confirm, ...data } = req.body
     const { error } = RegisterValidation.validate(req.body);
     if (error) return res.status(400).send(error.details);
     if (password !== password_confirm) return res.status(400).send({ message: "Passwords Do not match" });
@@ -18,9 +18,9 @@ export const register: RequestHandler = async (req, res) => {
     try {
         const { password, id, ...userData } = await repository.save({
             ...data,
-            password:hashedPassword,
-            role:{
-                id:1
+            password: hashedPassword,
+            role: {
+                id: 1
             }
         })
         res.status(200).send(userData)
@@ -42,7 +42,7 @@ export const login: RequestHandler = async (req, res) => {
         email: email
     })
 
-    if (!user) return res.status(404).json({ message: "User does not exist" })
+    if (!user) return res.status(401).json({ message: "User does not exist" })
 
     if (await bcrypt.compare(password, user.password)) {
         const { password, ...userData } = user;
@@ -52,8 +52,8 @@ export const login: RequestHandler = async (req, res) => {
             "userinfo",
             token, {
             httpOnly: true,
-            sameSite:'None',
-                secure: true,
+            secure: true,
+            sameSite:'none',
             maxAge: 24 * 60 * 60 * 1000 //24HRS
         }
         )
