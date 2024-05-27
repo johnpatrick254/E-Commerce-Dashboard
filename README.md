@@ -26,6 +26,14 @@
 
 **E-Commerce Admin Dashboard** is a simple dashboard for e-commerce admins, it allows them to add products, upload images , change prices, view orders report create users.
 
+## 🛠 Built With <a name="built-with"></a>
+
+- **React**
+- **TypeScript**
+- **Nodejs/Express**
+- **MySQL**
+- **TypeORM**
+
 ## 🖼️ Screenshots
 
  <img src="./public/assets/Screenshot 2024-05-26 184448.png" width="100%" height="500">
@@ -43,14 +51,6 @@
  <img src="./public/assets/Screenshot 2024-05-26 184920.png" width="100%" height="500">
  <br>
   <br>
-
-## 🛠 Built With <a name="built-with"></a>
-
-- **React**
-- **TypeScript**
-- **Nodejs/Express**
-- **MySQL**
-- **TypeORM**
 
 ### Key Features <a name="key-features"></a>
 
